@@ -119,13 +119,11 @@ function cscan (head,prev,queue,maxCylinderIndex) {
 	queue = queue.sort(sortNumber);
 	if (direction === "left"){
 		sum += head - 1;
-		sum += maxCylinderIndex;
 		sum += maxCylinderIndex - getHeadSibling(queue,head,"right");
 		return sum;
 	}
 	else if(direction === "right"){
 		sum += maxCylinderIndex - head;
-		sum += maxCylinderIndex;
 		sum += getHeadSibling(queue,head,"left")
 		return sum;
 	}
@@ -151,13 +149,11 @@ function clook (current,previous,queue) {
 	direction = getDirection(current,previous);
 	if(direction === "left"){
 		sum += current = queue[0];
-		sum += queue[(queue.length - 1)] - queue[0];
 		sum += queue[(queue.length - 1)] - getHeadSibling(queue,current,"right");
 		console.log(sum);
 	}
 	else{
 		sum += queue[(queue.length - 1)] - current;
-		sum += queue[(queue.length - 1)] - queue[0];
 		sum += getHeadSibling(queue,current,"left") - queue[0];
 		console.log("C-look: " + sum);
 	}
